@@ -66,39 +66,38 @@
 
 <template>
   <div class="container mx-auto mt-30">
-    <Header />
+      <Header />
 
-    <div class="mt-12 md:flex">
-      <Formulario
-        v-model:nombre="paciente.nombre"
-        v-model:edad="paciente.edad"
-        v-model:email="paciente.email"
-        v-model:telefono="paciente.telefono"
-        v-model:fecha="paciente.fecha"
-        v-model:sintomas="paciente.sintomas"
-        @guardar-paciente="agregarPaciente"
-        :id = "paciente.id"
-      />
-
-      <div class="md:w-1/2 md:h-screen overflow-y-scroll">
-        <h3 class="font-black text-3xl text-center">
-          Administra tus Pacientes
-        </h3>
-        <div v-if="pacientes.length > 0">
-          <p class="text-lg mt-4 text-center mb-10">
-            Información de
-            <span class="text-lime-600 font-bold">Pacientes</span>
-          </p>
-          <Paciente
-            v-for="paciente in pacientes"
-            :paciente="paciente"
-            @eliminar-paciente="eliminarPaciente"
-            @actualizar-paciente="actualizarPaciente"
+      <div class="mt-12 md:flex">
+          <Formulario
+            v-model:nombre="paciente.nombre"
+            v-model:edad="paciente.edad"
+            v-model:email="paciente.email"
+            v-model:telefono="paciente.telefono"
+            v-model:fecha="paciente.fecha"
+            v-model:sintomas="paciente.sintomas"
+            @guardar-paciente="agregarPaciente"
+            :id = "paciente.id"
           />
-        </div>
-
-        <p v-else class="mt-20 text-2xl text-center">No hay pacientes</p>
+      
+          <div class="md:w-1/2 md:h-screen overflow-y-auto">
+            <h3 class="font-black text-3xl text-center">
+              Administra tus Pacientes
+            </h3>
+            <div v-if="pacientes.length > 0">
+              <p class="text-lg mt-4 text-center mb-10">
+                Información de
+                <span class="text-lime-600 font-bold">Pacientes</span>
+              </p>
+              <Paciente
+                v-for="paciente in pacientes"
+                :paciente="paciente"
+                @eliminar-paciente="eliminarPaciente"
+                @actualizar-paciente="actualizarPaciente"
+              />
+            </div>
+            <p v-else class="mt-20 text-2xl text-center">No hay pacientes</p>
+          </div>
       </div>
-    </div>
   </div>
 </template>
